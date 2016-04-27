@@ -26,7 +26,8 @@ extern	struct	memblk	memlist;	/* Head of free memory list	*/
 extern	void	*minheap;		/* Start of heap		*/
 extern	void	*maxheap;		/* Highest valid heap address	*/
 
-
+extern void *vminheap;
+extern void *vmaxheap;
 /* Added by linker */
 
 extern	int	text;			/* Start of text segment	*/

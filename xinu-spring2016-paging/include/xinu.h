@@ -49,9 +49,21 @@
 /* Lab 5 definitions */
 void initialize_paging();
 void page_isr();
+void page_isr_c();
 void write_cr3(unsigned long *);
 char* getpage();
 void enable_paging();
 uint32 read_cr0();
 void write_cr0(uint32 );
 void identity_mapping(int );
+
+void test();
+char* vgetmem(uint32 );
+char *vgetmem_internal(int );
+vmemlist* create_vlist();
+vmemlist* create_node();
+void delete_node(vmemlist* );
+char* get_vaddress(vmemlist *, int );
+void free_vaddress(vmemlist *, char* , int );
+void vfreemem(char *, uint32 );
+

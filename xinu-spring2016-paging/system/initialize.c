@@ -90,10 +90,11 @@ void	nulluser()
 	enable();
 
 	/* Create a process to execute function main() */
-	/*uint32 *ptr = (uint32 *) 0x80000000;
+	/*uint32 *ptr = (uint32 *) 0x70000000;
 	kprintf ("Value is %x", *ptr); */
-	resume (
-	   vcreate((void *)main, INITSTK, 10, INITPRIO, "Main process", 0,
+	kprintf ("Creating main process\n");
+	resume(
+	   create((void *)main, INITSTK, INITPRIO, "Main process", 0,
            NULL));
 
 	/* Become the Null process (i.e., guarantee that the CPU has	*/

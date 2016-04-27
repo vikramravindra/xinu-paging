@@ -38,8 +38,13 @@
 
 #define NDESC		5	/* must be odd to make procent 4N bytes	*/
 
+typedef struct vmemblk {
+	struct vmemblk *vmnext;
+	char *vaddr;
+	//char *paddr;
+	uint32 vlength;
+	} vmemlist;
 /* Definition of the process table (multiple of 32 bits) */
-
 struct procent {		/* Entry in the process table		*/
 	uint16	prstate;	/* Process state: PR_CURR, etc.		*/
 	pri16	prprio;		/* Process priority			*/
@@ -55,6 +60,8 @@ struct procent {		/* Entry in the process table		*/
 	struct  pd_t *prpagedir; /* Page directory entry           */
 	int     pr_hsize;             /* Number of pages requested      */
 	int     pr_hsize_allocated;   /* Number of pages actually allocated */
+	bsd_t   prbs;                 /* backing store identifier */
+	vmemlist *prvfreelist;        /* Keep track of free memory of process */ 	 
 };
 
 /* Marker for the top of a process stack (used to help detect overflow)	*/

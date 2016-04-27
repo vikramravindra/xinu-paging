@@ -33,6 +33,5 @@ int psinit ()
         PAGE_SERVER_STATUS = PAGE_SERVER_ACTIVE;
 
         signal(bs_init_sem);
-
 	return OK;
 }

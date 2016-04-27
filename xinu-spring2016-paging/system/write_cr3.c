@@ -9,7 +9,7 @@ void write_cr3(unsigned long *ptr)
 	//*tmp = 0;
 	asm("movl %cr3, %eax");
 	asm("movl %eax, tmp");
-	kprintf ("cr3 now holds %08x\n", tmp);
+	//kprintf ("cr3 now holds %08x\n", tmp);
 	asm("popl %eax");
 
 }

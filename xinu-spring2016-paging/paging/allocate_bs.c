@@ -27,10 +27,12 @@ bsd_t	allocate_bs (
 			bstab[i].usecount = 0;
 
 			restore(mask);
+			//kprintf("Returning from allocate_bs\n");
 			return i;
 		}
 	}
-
+	
 	restore(mask);
+	//kprintf("Returning from allocate_bs\n");
 	return -1;
 }

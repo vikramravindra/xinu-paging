@@ -95,6 +95,11 @@ pid32	vcreate(
 	*--saddr = 0;			/* %esi */
 	*--saddr = 0;			/* %edi */
 	*pushsp = (unsigned long) (prptr->prstkptr = (char *)saddr);
+	/* Lab 5 edit to create a backing store for the process */
+	//get_bs(pid, hsize_in_pages);
+	prptr->prbs = allocate_bs(hsize_in_pages);
+	prptr->prvfreelist = create_vlist();
+	kprintf ("Process is allocated bs: %d\n",prptr->prbs);
 	restore(mask);
 	return pid;
 }

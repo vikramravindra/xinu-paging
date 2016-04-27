@@ -44,6 +44,8 @@ void initialize_paging()
 	prpagedir[576].pd_base = ((uint32)pg_tab) >> 12;
 
 	restore(mask);
+	//vminheap = (char *)4096;
+	//vmaxheap = (char *)0x89999999;
 	write_cr3(prpagedir);
 	set_evec(14, (uint32 )&page_isr);
 	//kprintf("Enabling paging...\n");
