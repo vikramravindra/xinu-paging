@@ -70,3 +70,14 @@ struct procent {		/* Entry in the process table		*/
 extern	struct	procent proctab[];
 extern	int32	prcount;	/* Currently active processes		*/
 extern	pid32	currpid;	/* Currently executing process		*/
+#define FRAME_REG 0
+#define FRAME_PG_DIR  1
+#define FRAME_PG_TAB  2
+typedef struct invertedpage {
+	int pid;
+	bool8 empty;
+	int type;
+	int vpage;
+}invertedpagetable;
+extern invertedpagetable invertpagetable[4096];
+extern int page_head;

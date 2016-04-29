@@ -28,6 +28,10 @@ pid32	currpid;		/* ID of currently executing process	*/
 
 bool8   PAGE_SERVER_STATUS;    /* Indicate the status of the page server */
 sid32   bs_init_sem;
+
+invertedpagetable invertpagetable[4096];
+int page_head;
+
 /*------------------------------------------------------------------------
  * nulluser - initialize the system and become the null process
  *
@@ -148,6 +152,13 @@ static	void	sysinit()
 		prptr->prname[0] = NULLCH;
 		prptr->prstkbase = NULL;
 		prptr->prprio = 0;
+	}
+
+	for (i = 0; i < NFRAMES; i++)
+	{
+		invertpagetable[i].empty = TRUE;
+		invertpagetable[i].pid = -1;
+		invertpagetable[i].type = FRAME_REG; 
 	}
 
 	/* Initialize the Null process entry */	

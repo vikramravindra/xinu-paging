@@ -51,13 +51,15 @@ void initialize_paging();
 void page_isr();
 void page_isr_c();
 void write_cr3(unsigned long *);
-char* getpage();
+char* getpage(int, int, uint32 );
+char* getpage_old();
 void enable_paging();
 uint32 read_cr0();
 void write_cr0(uint32 );
 void identity_mapping(int );
 
-void test();
+void test1();
+void test2();
 char* vgetmem(uint32 );
 char *vgetmem_internal(int );
 vmemlist* create_vlist();
@@ -66,4 +68,9 @@ void delete_node(vmemlist* );
 char* get_vaddress(vmemlist *, int );
 void free_vaddress(vmemlist *, char* , int );
 void vfreemem(char *, uint32 );
+void allocate_frame(int , int ,uint32  );
+uint32 frame2addr(uint32 );
 
+uint32 bs_page(uint32 );
+uint32 pd(uint32 );
+uint32 pt(uint32 );
