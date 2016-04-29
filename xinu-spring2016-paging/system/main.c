@@ -18,6 +18,7 @@ process	main(void)
 	recvclr();
 	//resume(vcreate(test1, 2048, 10, 50, "test", 0, NULL));
 	resume(vcreate(test2, 2048, 10, 50, "test1", 0, NULL));
+	//resume(vcreate(test3, 2048, 10, 50, "test", 0, NULL));
 	//resume(vcreate(shell, 8192, 10, 50, "shell", 1, CONSOLE));
 	//kprintf("returned from shell\n");
 	/* Wait for shell to exit and recreate it */

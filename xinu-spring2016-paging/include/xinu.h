@@ -60,6 +60,7 @@ void identity_mapping(int );
 
 void test1();
 void test2();
+void test3();
 char* vgetmem(uint32 );
 char *vgetmem_internal(int );
 vmemlist* create_vlist();

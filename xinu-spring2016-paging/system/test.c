@@ -49,3 +49,22 @@ void test2()
 	}
 	kprintf("\n");
 }
+
+
+void test3()
+{
+	char *ret1 = vgetmem(5 * NBPG);
+	char *ret2 = vgetmem(5 * NBPG);
+	int i;
+	for (i = 0; i < 5; i++)
+	{
+		ret1[i*NBPG + 1] = 'a';
+		ret2[i*NBPG + 1] = 'b';
+	}
+	for (i = 0; i < 5; i++)
+	{
+		kprintf("%c%c",ret1[i*NBPG + 1],ret2[i*NBPG + 1]);
+	}
+
+}
+

@@ -3,9 +3,9 @@
 vmemlist* create_vlist()
 {	
 	vmemlist* head = create_node();
-	head->vaddr = (char *)(4096 * 4096);
+	head->vaddr = (char *)(NBPG * (FRAME0 + NFRAMES)); //4096
 	//kprintf ("Process' virtual address starts at %x\n", head->vaddr);
-	head->vlength = 0x90000000 - 4096;
+	head->vlength = 0x90000000 - (NBPG * (FRAME0 + NFRAMES)); //4096
 	return head;
 }
 
@@ -71,11 +71,11 @@ void free_vaddress(vmemlist *head, char* vaddr, int size)
 	if (temp->vmnext == NULL || vaddr < temp->vaddr) /* There is only one node or the node needs to be inserted at the head */
 	{
 		//kprintf ("%x %x\n", (char *)(4096 + size) , temp->vaddr);
-		if ((char *)(4096 + size) == temp->vaddr) /* co-alesce with first node */
+		if ((char *)((NBPG * (FRAME0 + NFRAMES)) + size) == temp->vaddr) /* co-alesce with first node */
 		{
 			//kprintf("exact match");
-			temp->vaddr = (char *)4096;
-			temp->vlength = 0x90000000 - 4096;
+			temp->vaddr = (char *)(NBPG * (FRAME0 + NFRAMES));
+			temp->vlength = 0x90000000 - (NBPG * (FRAME0 + NFRAMES));
 			return;
 		}
 		//kprintf ("%x %x\n", (unsigned long)vaddr + (unsigned long )size , temp->vaddr);
